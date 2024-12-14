@@ -10,7 +10,6 @@ class Logger:
     @staticmethod
     def create_log():
         try:
-            print(Logger._current_log)
             os.makedirs("logs", exist_ok=True)
             with open("logs/" + Logger._current_log, 'w') as f:
                 f.write('# ----------------------- Logs ----------------------- \n')
