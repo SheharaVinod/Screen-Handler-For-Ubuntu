@@ -1,3 +1,4 @@
+import os
 import subprocess
 
 from Subprocess.console_massage_handler import Console
@@ -62,7 +63,7 @@ class ScreenManager:
     @staticmethod
     def run_bash_script(script_path):
         try:
-            subprocess.run(['bash', script_path], check=True)
+            subprocess.run(['bash', script_path], check=True, env=os.environ.copy())
             Console.info("Run a bash script on " + script_path)
             Logger.log("Run a bash script on " + script_path)
 
