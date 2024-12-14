@@ -42,7 +42,7 @@ def main():
 
                 if data.get_screens()[screen_name]["ending_time"] <= datetime.datetime.now():
                     # run bash script.
-                    if screen_name not in ScreenManager.screen_list():
+                    if screen_name in ScreenManager.screen_list():
                         # double check.
                         data.get_screens()[screen_name]["starting_time"] = None
                         data.get_screens()[screen_name]["ending_time"] = None
