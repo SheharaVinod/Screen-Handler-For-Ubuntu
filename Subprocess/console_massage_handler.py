@@ -1,5 +1,3 @@
-from Subprocess.logger import Logger
-
 class Console:
     _prefix = "[ScreenManager] "
 
@@ -14,7 +12,3 @@ class Console:
     @staticmethod
     def error(massage):
         print(Console._prefix, "ERROR: ", massage)
-
-    @staticmethod
-    def log(massage):
-        Logger.log(massage)
