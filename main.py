@@ -42,12 +42,19 @@ def main():
 
                 if data.get_screens()[screen_name]["ending_time"] <= datetime.datetime.now():
                     # run bash script.
+                    if screen_name not in ScreenManager.screen_list():
+                        # double check.
+                        data.get_screens()[screen_name]["starting_time"] = None
+                        data.get_screens()[screen_name]["ending_time"] = None
+                        continue
+
                     ScreenManager.run_bash_script(bash_file)
                     Console.info("Bash script run at " + str(datetime.datetime.now()))
                     Logger.log("Bash script run at " + str(datetime.datetime.now()))
 
                     data.get_screens()[screen_name]["starting_time"] = None
                     data.get_screens()[screen_name]["ending_time"] = None
+
 
 
 if __name__ == '__main__':

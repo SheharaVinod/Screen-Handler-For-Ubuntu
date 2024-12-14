@@ -1,15 +1,15 @@
 {
   "screens": [
     {
-      "screen_name": "build",
-      "bash_script_path": "shehara/start.sh",
+      "screen_name": "shehara",
+      "bash_script_path": "../shehara/start.sh",
       "checking_cool_down_in_minutes": 1,
       "optional": {
         "if_screen_not_found_while_checking_run_this_script": "copy error log files using a bash script."
       }
     },{
-      "screen_name": "survival",
-      "bash_script_path": "survival/start.sh",
+      "screen_name": "build",
+      "bash_script_path": "../build/start.sh",
       "checking_cool_down_in_minutes": 1,
       "optional": {
         "if_screen_not_found_while_checking_run_this_script": "copy error log files using a bash script."
