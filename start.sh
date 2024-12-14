@@ -1,0 +1,1 @@
+screen -dm -S screen_manager -t screen_manager bash -c 'python3 main.py'
