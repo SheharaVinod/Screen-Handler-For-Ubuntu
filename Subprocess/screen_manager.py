@@ -63,7 +63,7 @@ class ScreenManager:
     @staticmethod
     def run_bash_script(script_path):
         try:
-            subprocess.call(['bash', script_path])
+            subprocess.call('bash ' + script_path, shell=True)
             # result = subprocess.run(['bash', script_path], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             # print("STDOUT:", result.stdout)
             # print("STDERR:", result.stderr)
@@ -72,4 +72,3 @@ class ScreenManager:
 
         except subprocess.CalledProcessError as e:
             Console.error(f"Unable to execute '{script_path}'. {e}")
-
