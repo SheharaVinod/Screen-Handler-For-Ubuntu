@@ -2,14 +2,14 @@
   "screens": [
     {
       "screen_name": "shehara",
-      "bash_script_path": "../shehara/start.sh",
+      "bash_script_path": "../shehara",
       "checking_cool_down_in_minutes": 1,
       "optional": {
         "if_screen_not_found_while_checking_run_this_script": "copy error log files using a bash script."
       }
     },{
       "screen_name": "build",
-      "bash_script_path": "../build/start.sh",
+      "bash_script_path": "../build",
       "checking_cool_down_in_minutes": 1,
       "optional": {
         "if_screen_not_found_while_checking_run_this_script": "copy error log files using a bash script."

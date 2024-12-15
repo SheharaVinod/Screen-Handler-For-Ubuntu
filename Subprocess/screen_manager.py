@@ -68,7 +68,7 @@ class ScreenManager:
             # print("STDOUT:", result.stdout)
             # print("STDERR:", result.stderr)
             sbs_path = os.path.abspath(script_path)
-            result = os.system(f"env -i bash {sbs_path}")
+            result = os.system(f"bash {sbs_path}")
 
             if result == 0:
                 Console.info("Run a bash script on " + script_path)

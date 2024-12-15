@@ -1,5 +1,6 @@
 import json
 import datetime
+import os
 import subprocess
 
 from Subprocess.screen_manager import ScreenManager
@@ -48,7 +49,8 @@ def main():
                         data.get_screens()[screen_name]["ending_time"] = None
                         continue
 
-                    ScreenManager.run_bash_script(bash_file)
+                    # ScreenManager.run_bash_script(bash_file)
+                    os.system("cd " + bash_file + "\r\n./start.sh")
                     Console.info("Bash script run at " + str(datetime.datetime.now()))
                     Logger.log("Bash script run at " + str(datetime.datetime.now()))
 
