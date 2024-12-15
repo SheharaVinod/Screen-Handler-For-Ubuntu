@@ -49,8 +49,8 @@ def main():
                         data.get_screens()[screen_name]["ending_time"] = None
                         continue
 
-                    # ScreenManager.run_bash_script(bash_file)
-                    os.system("cd " + bash_file + "\r\n./start.sh")
+                    ScreenManager.run_bash_script(bash_file)
+                    #os.system("cd " + bash_file + "\r\n./start.sh")
                     Console.info("Bash script run at " + str(datetime.datetime.now()))
                     Logger.log("Bash script run at " + str(datetime.datetime.now()))
 

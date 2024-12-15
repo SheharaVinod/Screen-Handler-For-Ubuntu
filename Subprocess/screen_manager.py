@@ -63,12 +63,16 @@ class ScreenManager:
     @staticmethod
     def run_bash_script(script_path):
         try:
+            Console.info("Triyn")
             # subprocess.call('bash ' + script_path, shell=True)
-            # result = subprocess.run(['bash', script_path], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            result = subprocess.run(['bash ', script_path], check=False, text=True, stdout=subprocess.PIPE,
+                                    stderr=subprocess.PIPE)
             # print("STDOUT:", result.stdout)
             # print("STDERR:", result.stderr)
-            sbs_path = os.path.abspath(script_path)
-            result = os.system(f"bash {sbs_path}")
+            # sbs_path = os.path.abspath(script_path)
+            # result = os.system(f"bash {sbs_path}")
+
+            print(result)
 
             if result == 0:
                 Console.info("Run a bash script on " + script_path)
