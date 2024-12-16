@@ -5,6 +5,7 @@ from Subprocess.console_massage_handler import Console
 
 
 class JsonDataBase:
+    # Structure.
     # screens = {
     #     "build": {
     #         "bash_script_path": "shehara/start.sh",
@@ -34,7 +35,6 @@ class JsonDataBase:
         self._generate_structure_of_data()
 
     def _generate_structure_of_data(self):
-        # data: list = self.json_data["screens"]
         for screens in self.json_data["screens"]:
             screen_name = screens["screen_name"]
 

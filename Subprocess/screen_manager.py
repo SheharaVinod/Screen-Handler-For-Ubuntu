@@ -63,22 +63,38 @@ class ScreenManager:
     @staticmethod
     def run_bash_script(script_path):
         try:
-            Console.info("Triyn")
-            # subprocess.call('bash ' + script_path, shell=True)
-            result = subprocess.run(['bash ', script_path], check=False, text=True, stdout=subprocess.PIPE,
+            Console.info(f"Trying to execute the script in :{script_path}")
+            script_dir = ScreenManager._get_directory(script_path)
+            if script_dir is None:
+                Console.error(f"{script_path} this script not exist.")
+                Logger.log(f"{script_path} this script not exist.")
+                return None
+
+            os.chdir(script_dir)
+            result = subprocess.run(['bash', os.path.abspath(os.path.expanduser(script_path))], check=False, text=True, stdout=subprocess.PIPE,
                                     stderr=subprocess.PIPE)
-            # print("STDOUT:", result.stdout)
-            # print("STDERR:", result.stderr)
-            # sbs_path = os.path.abspath(script_path)
-            # result = os.system(f"bash {sbs_path}")
-
-            print(result)
-
-            if result == 0:
+            if result.returncode == 0:
                 Console.info("Run a bash script on " + script_path)
                 Logger.log("Run a bash script on " + script_path)
+                return True
             else:
                 Console.error(f"Error occurred while running '{script_path}'. Exit code: {result}")
+                Logger.log(f"Error occurred while running '{script_path}'. Exit code: {result}")
 
         except subprocess.CalledProcessError as e:
             Console.error(f"Unable to execute '{script_path}'. {e}")
+            Logger.log(f"Unable to execute '{script_path}'. {e}")
+
+    @staticmethod
+    def _get_directory(file_path):
+        if file_path.startswith('~'):
+            file_path = os.path.expanduser(file_path)
+        else:
+            raise ValueError(file_path + " is not an expected path type.")
+        if not os.path.exists(file_path):
+            return None
+        try:
+            directory = os.path.dirname(file_path)
+        except (OSError, ValueError):
+            return None
+        return directory
