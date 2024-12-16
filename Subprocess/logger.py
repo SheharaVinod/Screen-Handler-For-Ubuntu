@@ -11,7 +11,7 @@ class Logger:
     @staticmethod
     def create_log():
         try:
-            os.chdir(Logger._data_path)
+            os.chdir(os.path.abspath(os.path.expanduser(Logger._data_path)))
 
             os.makedirs("logs", exist_ok=True)
             with open("logs/" + Logger._current_log, 'w') as f:
