@@ -28,8 +28,8 @@ def main():
                         data.get_screens()[screen_name]["starting_time"] + datetime.timedelta(minutes=cool_down)
                     data.get_screens()[screen_name]["how_many_times_are_down_the_screen"] += 1
 
-                    Console.info("Server down or screen not found at " + str(datetime.datetime.now()))
-                    Logger.log("Server down or screen not found at " + str(datetime.datetime.now()))
+                    Console.info(screen_name + " Server down or screen not found at " + str(datetime.datetime.now()))
+                    Logger.log(screen_name + " Server down or screen not found at " + str(datetime.datetime.now()))
 
                 if data.get_screens()[screen_name]["ending_time"] <= datetime.datetime.now():
                     # run bash script.
