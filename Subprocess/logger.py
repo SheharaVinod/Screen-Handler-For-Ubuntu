@@ -6,10 +6,13 @@ from Subprocess.console_massage_handler import Console
 class Logger:
     _prefix = "[ScreenManager] "
     _current_log = "log-" + str(datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")) + ".txt"
+    _data_path = "~/Screen-Handler-For-Ubuntu/"
 
     @staticmethod
     def create_log():
         try:
+            os.chdir(Logger._data_path)
+
             os.makedirs("logs", exist_ok=True)
             with open("logs/" + Logger._current_log, 'w') as f:
                 f.write('# ----------------------- Logs ----------------------- \n')
@@ -20,6 +23,8 @@ class Logger:
     @staticmethod
     def log(massage):
         # "[ScreenManager] at mm/dd  HH:MM:SS -> "
+        os.chdir(Logger._data_path)
+
         time = datetime.datetime.now()
         log_prefix = f"{Logger._prefix} at {time.month}/{time.day} {time.hour}:{time.minute}:{time.second} -> "
         try:

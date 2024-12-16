@@ -1,4 +1,5 @@
 import json
+import os
 from datetime import datetime
 
 from Subprocess.console_massage_handler import Console
@@ -27,10 +28,12 @@ class JsonDataBase:
     #     }
     # }
 
+    _data_path = "~/Screen-Handler-For-Ubuntu/data/handle.json"
+
     def __init__(self):
         self.screens = {}
 
-        with open("data/handle.json") as data:
+        with open(os.path.abspath(os.path.expanduser(JsonDataBase._data_path))) as data:
             self.json_data = json.load(data)
         self._generate_structure_of_data()
 
